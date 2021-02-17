@@ -76,7 +76,7 @@
             var n2 = document.getElementById("n2").value
             n2 = n2.replace(',', '.')
             var notaF = n1*0.4 + n2*0.6
-            if(notaF>=7){
+            if(notaF>=7.00){
                 document.getElementById("resultado").innerHTML = `Sua nota é: ${notaF.toFixed(1)}. <br> Aprovado por nota!`
             } else {
                 var exame = (5-((notaF.toFixed(1))*0.6))/0.4
