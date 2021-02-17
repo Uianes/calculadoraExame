@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <style>
+        body {
+            overflow-y: hidden;
+        }
+
+        .centered {
+            margin: 0 auto !important;
+            float: none !important;
+        }
+
+        .vertical-center {
+            min-height: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light p-2 shadow">
+        <span class="navbar-brand h1">Minha nota</span>
+    </nav>
+
+    <div class="container-fluid" style="background-color: #4170e8; height: 100vh;">
+        <div class="row">
+            <div class="col-12 justify-content-center vertical-center">
+                <div class="jumbotron jumbotron-fluid p-3 rounded shadow-lg" style="background-color: azure;">
+                    <h1 class="display-4">Notas:</h1>
+                    <p class="lead">A nota Final é calculada assim: <br>
+                        Nota Final: Nota 1º Semestre * 0.4 + Nota 2º Semestre * 0.6<br>
+                        Quanto preciso tirar no exame? <br>
+                        Exame = (5-(NotaFinal * 0.6))/0.4
+                        <br>
+                        Como fica minha nota final com o exame?<br>
+                        Nota final = MédiaAnual * 0.6 + Exame * 0.4
+                    </p>
+                    <hr class="my-4">
+                    <form class="text-center">
+                        <div class="form-group">
+                            <label for="n1">Nota do 1º Semestre</label>
+                            <input type="text" class="form-control" id="n1" placeholder="Exemplo: 6.8">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="n2">Nota do 2º Semestre</label>
+                            <input type="text" class="form-control" id="n2" placeholder="Exemplo: 7.0">
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-primary" onclick="calcular()">Calcular</button>
+                    </form>
+                    <br>
+                    <p id="resultado"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <script>
+        function calcular(){
+            var n1 = document.getElementById("n1").value
+            n1 = n1.replace(',', '.')
+            var n2 = document.getElementById("n2").value
+            n2 = n2.replace(',', '.')
+            var notaF = n1*0.4 + n2*0.6
+            if(notaF>=7){
+                document.getElementById("resultado").innerHTML = `Sua nota é: ${notaF.toFixed(1)}. <br> Aprovado por nota!`
+            } else {
+                var exame = (5-((notaF.toFixed(1))*0.6))/0.4
+                document.getElementById("resultado").innerHTML = `Sua nota é ${notaF.toFixed(1)}. <br> Você precisa tirar ${exame.toFixed(1)} para passar.`
+            }
+        }
+        
+    </script>
+</body>
+
+</html>
